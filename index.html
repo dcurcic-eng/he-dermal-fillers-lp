@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TS6TK364');</script>
+<!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="googlebot" content="noindex, nofollow">
@@ -301,6 +308,10 @@ html.lenis, html.lenis body { height: auto; }
 @media (hover: hover) and (pointer: fine) and (width >= 1100px) { .lead__call a:hover { color: var(--magenta); } }
 .lead__done { display: none; align-items: center; gap: 0.8rem; font-size: 1.5rem; font-weight: 500; color: var(--crimson); }
 .lead.is-sent .lead__done { display: flex; }
+.lead__consent { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.2rem; line-height: 1.45; color: var(--text-2); cursor: pointer; }
+.lead__consent input { flex: none; inline-size: 1.8rem; block-size: 1.8rem; margin: 0; accent-color: var(--magenta); cursor: pointer; }
+.lead__error { display: none; font-size: 1.4rem; line-height: 1.3; color: var(--crimson); }
+.lead__error.is-shown { display: block; }
 .btn[disabled] { opacity: 0.6; cursor: progress; }
 
 /* ---------- hero fits the screen height (desktop) ----------
@@ -333,6 +344,9 @@ html.lenis, html.lenis body { height: auto; }
   .hero__card .lead__call, .hero__card .lead__done { gap: calc(0.8 * var(--u)); }
   .hero__card .lead__call { font-size: calc(1.4 * var(--u)); }
   .hero__card .lead__done { font-size: calc(1.5 * var(--u)); }
+  .hero__card .lead__consent { gap: var(--u); font-size: calc(1.2 * var(--u)); }
+  .hero__card .lead__consent input { inline-size: calc(1.8 * var(--u)); block-size: calc(1.8 * var(--u)); }
+  .hero__card .lead__error { font-size: calc(1.4 * var(--u)); }
 }
 @media (pointer: coarse) {
   .hero__card .field input { font-size: max(16px, calc(1.5 * var(--u, 1rem))); }
@@ -951,6 +965,10 @@ html.lenis, html.lenis body { height: auto; }
 </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS6TK364"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a class="skip" href="#claim">Skip to the $100 offer form</a>
 
 <svg class="sprite" aria-hidden="true" focusable="false">
@@ -1005,11 +1023,13 @@ html.lenis, html.lenis body { height: auto; }
           <div class="field"><label for="h-last">Last name</label><input id="h-last" name="last_name" type="text" autocomplete="family-name" placeholder="Your last name" required><span class="field__error">Please add your last name.</span></div>
         </div>
         <div class="lead__row">
-          <div class="field"><label for="h-phone">Phone number</label><input id="h-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required pattern="[0-9()+.\s]{7,}"><span class="field__error">Please add a phone number.</span></div>
+          <div class="field"><label for="h-phone">Phone number</label><input id="h-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required><span class="field__error">Please enter a 10-digit US phone number.</span></div>
           <div class="field"><label for="h-email">Email</label><input id="h-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required><span class="field__error">Please add a valid email.</span></div>
         </div>
-        <div class="field"><label for="h-improve">What would you like to improve?</label><input id="h-improve" name="improve" type="text" placeholder="For example, fuller lips or softer smile lines"></div>
+        <div class="field"><label for="h-improve">What would you like to improve?</label><input id="h-improve" name="message" type="text" placeholder="For example, fuller lips or softer smile lines"></div>
+        <label class="lead__consent" for="h-consent"><input id="h-consent" name="consent" type="checkbox" required><span>By submitting this form, you agree to receive marketing text messages, alerts, and notifications from Healthy Enhancements. Message frequency may vary. Rates may be applied. You can opt out at any time by replying STOP.</span></label>
         <button class="btn btn--block" type="submit">Claim my $100 off <svg class="i i-18" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <p class="lead__error" role="alert" aria-live="polite"></p>
         <p class="lead__done" role="status"><svg class="i i-20" aria-hidden="true"><use href="#i-check"/></svg> Thank you. Melissa's team will reach out soon.</p>
         <p class="lead__call"><svg class="i i-18" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+15612699815">Prefer to talk? Call (561) 269-9815</a></p>
       </form>
@@ -1333,11 +1353,13 @@ html.lenis, html.lenis body { height: auto; }
           <div class="field"><label for="c-last">Last name</label><input id="c-last" name="last_name" type="text" autocomplete="family-name" placeholder="Your last name" required><span class="field__error">Please add your last name.</span></div>
         </div>
         <div class="lead__row">
-          <div class="field"><label for="c-phone">Phone number</label><input id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required pattern="[0-9()+.\s]{7,}"><span class="field__error">Please add a phone number.</span></div>
+          <div class="field"><label for="c-phone">Phone number</label><input id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required><span class="field__error">Please enter a 10-digit US phone number.</span></div>
           <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required><span class="field__error">Please add a valid email.</span></div>
         </div>
-        <div class="field"><label for="c-improve">What would you like to improve?</label><input id="c-improve" name="improve" type="text" placeholder="For example, fuller lips or softer smile lines"></div>
+        <div class="field"><label for="c-improve">What would you like to improve?</label><input id="c-improve" name="message" type="text" placeholder="For example, fuller lips or softer smile lines"></div>
+        <label class="lead__consent" for="c-consent"><input id="c-consent" name="consent" type="checkbox" required><span>By submitting this form, you agree to receive marketing text messages, alerts, and notifications from Healthy Enhancements. Message frequency may vary. Rates may be applied. You can opt out at any time by replying STOP.</span></label>
         <button class="btn btn--block" type="submit">Claim my $100 off <svg class="i i-20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <p class="lead__error" role="alert" aria-live="polite"></p>
         <p class="lead__done" role="status"><svg class="i i-20" aria-hidden="true"><use href="#i-check"/></svg> Thank you. Melissa's team will reach out soon.</p>
         <p class="lead__micro">New clients only. No pressure. Melissa will talk you through every option.</p>
       </form>
@@ -1711,34 +1733,111 @@ html.lenis, html.lenis body { height: auto; }
   }
 
   /* ------------------------------------------------------------------
-     5. Lead forms. This static page has no backend yet: the data is not
-        sent anywhere. Wire `payload` to the CRM or form endpoint below.
-        A dataLayer event (no personal data) is pushed for GTM.
+     5. Lead forms. Both forms post to the AEVA contacts API
+        (add_contact_from_form). On success a `form-success` dataLayer
+        event (no personal data) is pushed for GTM.
      ------------------------------------------------------------------ */
+  var LEAD_ENDPOINT = "https://api.aevadigital.com/api/v1/contacts/add_contact_from_form/";
+  var LEAD_ORG = "b3df9b93-dcf3-4ad3-86a7-cb50946514ed";
+  var LEAD_FORM_ID = "644";
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+
+  /* "(555) 555-5555", "555.555.5555", "+1 555 555 5555" -> "5555555555" */
+  function phoneDigits(v) {
+    var d = String(v || "").replace(/\D/g, "");
+    if (d.length === 11 && d.charAt(0) === "1") d = d.slice(1);
+    return d;
+  }
+
+  /* Ad click id from the URL, first match wins */
+  function adTracking() {
+    var params = new URLSearchParams(window.location.search);
+    var map = [["gclid", "google"], ["wbraid", "google"], ["gbraid", "google"], ["fbclid", "meta"], ["ttclid", "tiktok"]];
+    for (var i = 0; i < map.length; i++) {
+      var val = params.get(map[i][0]);
+      if (val) return { param: val, source: map[i][1] };
+    }
+    return { param: "", source: "other" };
+  }
+
   [].forEach.call(document.querySelectorAll("form[data-lead]"), function (form) {
+    var btn = form.querySelector('button[type="submit"]');
+    var errEl = form.querySelector(".lead__error");
+    var phoneEl = form.elements.phone;
+    var emailEl = form.elements.email;
+
+    function showError(msg) {
+      if (!errEl) return;
+      errEl.textContent = msg;
+      errEl.classList.toggle("is-shown", !!msg);
+    }
+
+    /* Custom validity feeds the native check, so the existing inline
+       error styling (:user-invalid) is what the visitor sees. */
+    function checkPhone() {
+      var v = phoneEl.value.trim();
+      phoneEl.setCustomValidity(!v || phoneDigits(v).length === 10 ? "" : "Please enter a 10-digit US phone number.");
+    }
+    function checkEmail() {
+      var v = emailEl.value.trim();
+      emailEl.setCustomValidity(!v || EMAIL_RE.test(v) ? "" : "Please enter a valid email address.");
+    }
+    phoneEl.addEventListener("input", checkPhone);
+    emailEl.addEventListener("input", checkEmail);
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
       if (!btn || btn.disabled) return;
-      var payload = Object.fromEntries(new FormData(form));   // TODO: send to the CRM endpoint
-      void payload;
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "lead_form_submit", form_location: form.getAttribute("data-lead") });
+      checkPhone();
+      checkEmail();
+      if (!form.reportValidity()) return;
+      showError("");
+      form.classList.remove("is-sent");
+
+      var tracking = adTracking();
+      var fd = new FormData();
+      fd.append("first_name", form.elements.first_name.value.trim());
+      fd.append("last_name", form.elements.last_name.value.trim());
+      fd.append("phone", "+1" + phoneDigits(phoneEl.value));
+      fd.append("email", emailEl.value.trim());
+      fd.append("checkbox", form.elements.consent.checked ? "on" : "");
+      fd.append("organization", LEAD_ORG);
+      fd.append("form", LEAD_FORM_ID);
+      fd.append("message", form.elements.message.value.trim());
+      fd.append("form_location", window.location.href);
+      fd.append("tracking_param", tracking.param);
+      fd.append("ad_source", tracking.source);
 
       var label = btn.innerHTML;
       btn.disabled = true;
       btn.textContent = "Sending";
-      setTimeout(function () {
-        form.classList.add("is-sent");
-        form.reset();
-        btn.innerHTML = label;
-        btn.disabled = false;
-        if (motion) {
-          gsap.timeline()
-            .to(btn, { backgroundColor: "#be1d51", boxShadow: "inset 0 0 0 1px #be1d51", duration: 0.25, ease: "power2.out" })
-            .to(btn, { clearProps: "backgroundColor,boxShadow", duration: 0.25, ease: "power2.out", delay: 1.2 });
-        }
-      }, 600);
+
+      fetch(LEAD_ENDPOINT, { method: "POST", body: fd })
+        .then(function (res) {
+          if (res.ok) return;
+          return res.text().catch(function () { return res.statusText; }).then(function (txt) {
+            throw new Error(txt || "Server error");
+          });
+        })
+        .then(function () {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "form-success", form_location: form.getAttribute("data-lead") });
+          form.classList.add("is-sent");
+          form.reset();
+          btn.innerHTML = label;
+          btn.disabled = false;
+          if (motion) {
+            gsap.timeline()
+              .to(btn, { backgroundColor: "#be1d51", boxShadow: "inset 0 0 0 1px #be1d51", duration: 0.25, ease: "power2.out" })
+              .to(btn, { clearProps: "backgroundColor,boxShadow", duration: 0.25, ease: "power2.out", delay: 1.2 });
+          }
+        })
+        .catch(function (err) {
+          console.error(err);
+          showError("Submission failed. Please try again or call (561) 269-9815.");
+          btn.innerHTML = label;
+          btn.disabled = false;
+        });
     });
   });
 
